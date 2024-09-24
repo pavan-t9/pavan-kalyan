@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  labels:
+    app: simple-python-app
+spec:
+  type: NodePort  # For external access, change to ClusterIP for internal access
+  selector:
+    app: simple-python-app       # This must match the label of the pods you want to expose
+  ports:
+    - protocol: TCP
+      port: 80        # External port
+      targetPort: 80  # Pod's container port
